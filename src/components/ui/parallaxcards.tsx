@@ -1,8 +1,12 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef, useEffect, useState, useLayoutEffect } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface CardData {
   lightBg: string;
@@ -16,7 +20,14 @@ interface ParallaxCardsProps {
 
 const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const progress = useMotionValue(0);
+  const smoothProgress = useSpring(progress, {
+    stiffness: 60,
+    damping: 25,
+    restDelta: 0.0001,
+  });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -25,27 +36,36 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  useLayoutEffect(() => {
+    if (!containerRef.current || !stickyRef.current) return;
 
-  // Smooth spring for buttery animations
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
+    const scrollDistance = window.innerHeight * (cards.length - 1);
+
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top top",
+      end: `+=${scrollDistance}`,
+      pin: stickyRef.current,
+      pinSpacing: true,
+      scrub: 0.8,
+      onUpdate: (self) => {
+        progress.set(self.progress);
+      },
+    });
+
+    return () => {
+      trigger.kill();
+    };
+  }, [cards.length, progress]);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative"
-      style={{ height: `${(cards.length + 1) * 100}vh` }}
-    >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <div ref={containerRef} className="relative">
+      <div 
+        ref={stickyRef} 
+        className="h-screen w-full overflow-hidden"
+      >
         {cards.map((card, index) => (
-          <Card
+          <StackingCard
             key={index}
             card={card}
             index={index}
@@ -59,7 +79,7 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
   );
 };
 
-interface CardProps {
+interface StackingCardProps {
   card: CardData;
   index: number;
   totalCards: number;
@@ -67,56 +87,81 @@ interface CardProps {
   isMobile: boolean;
 }
 
-const Card = ({ card, index, totalCards, progress, isMobile }: CardProps) => {
-  // Each card takes up 1/(totalCards) of the scroll
-  const cardProgress = 1 / totalCards;
-  const start = index * cardProgress;
-  const end = start + cardProgress;
+const StackingCard = ({ card, index, totalCards, progress, isMobile }: StackingCardProps) => {
+  const segmentSize = 1 / (totalCards - 1 || 1);
+  const isFirstCard = index === 0;
+  
+  // Calculate animation timing for each card
+  // First card is always visible
+  // Subsequent cards animate from (index-1)*segmentSize to index*segmentSize
+  const cardStart = isFirstCard ? 0 : (index - 1) * segmentSize;
+  const cardEnd = isFirstCard ? 0 : index * segmentSize;
 
-  // Card starts from bottom and moves up
+  // Y position - first card stays, others slide up from bottom
   const y = useTransform(
     progress,
-    [start, end],
-    ["100%", "0%"]
+    isFirstCard 
+      ? [0, 1] 
+      : [cardStart, cardEnd],
+    isFirstCard 
+      ? ["0%", "0%"] 
+      : ["100%", "0%"]
   );
 
-  // Slight scale effect as card settles
+  // Scale animation
   const scale = useTransform(
     progress,
-    [start, start + cardProgress * 0.5, end],
-    [0.95, 0.98, 1]
+    isFirstCard 
+      ? [0, 1]
+      : [cardStart, cardStart + segmentSize * 0.3, cardEnd],
+    isFirstCard 
+      ? [1, 1]
+      : [0.85, 0.92, 1]
   );
 
-  // Opacity fade in
+  // Opacity
   const opacity = useTransform(
     progress,
-    [start, start + cardProgress * 0.3],
-    [0, 1]
+    isFirstCard 
+      ? [0, 1]
+      : [cardStart, cardStart + segmentSize * 0.15],
+    isFirstCard 
+      ? [1, 1]
+      : [0, 1]
   );
 
-  // Previous cards get pushed down and dimmed slightly
-  const stackOffset = useTransform(
+  // Dim previous cards when next card arrives
+  const nextCardProgress = index * segmentSize;
+  const nextCardEnd = Math.min(1, (index + 1) * segmentSize);
+  const hasNextCard = index < totalCards - 1;
+  
+  const dimming = useTransform(
     progress,
-    [end, Math.min(1, end + cardProgress)],
-    [0, isMobile ? 30 : 50]
+    [nextCardProgress, nextCardEnd],
+    hasNextCard ? [1, 0.55] : [1, 1]
   );
 
-  const brightness = useTransform(
+  const shrink = useTransform(
     progress,
-    [end, Math.min(1, end + cardProgress)],
-    [1, 0.7]
+    [nextCardProgress, nextCardEnd],
+    hasNextCard ? [1, 0.9] : [1, 1]
   );
 
-  const stackScale = useTransform(
+  const filterValue = useTransform(dimming, (d) => `brightness(${d})`);
+
+  // Shadow
+  const shadowOpacity = useTransform(
     progress,
-    [end, Math.min(1, end + cardProgress)],
-    [1, 0.95]
+    isFirstCard ? [0, 1] : [cardStart, cardEnd],
+    isFirstCard ? [0, 0] : [0, 0.6]
   );
 
   return (
     <motion.div
       className={cn(
-        "absolute inset-0 w-full h-full rounded-t-[2rem] sm:rounded-t-[3rem] overflow-hidden",
+        "absolute inset-0 w-full h-full overflow-hidden will-change-transform",
+        "rounded-t-[2rem] sm:rounded-t-[3rem]",
+        "backface-hidden",
         card.lightBg,
         card.darkBg
       )}
@@ -125,14 +170,17 @@ const Card = ({ card, index, totalCards, progress, isMobile }: CardProps) => {
         scale,
         opacity,
         zIndex: index + 1,
+        boxShadow: useTransform(
+          shadowOpacity,
+          (o) => `0 -40px 100px rgba(0, 0, 0, ${o})`
+        ),
       }}
     >
       <motion.div
         className="w-full h-full flex items-center justify-center p-6 sm:p-12"
         style={{
-          y: stackOffset,
-          scale: stackScale,
-          filter: useTransform(brightness, (b) => `brightness(${b})`),
+          scale: shrink,
+          filter: filterValue,
         }}
       >
         {card.content}
