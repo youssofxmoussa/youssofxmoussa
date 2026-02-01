@@ -21,21 +21,13 @@ interface ParallaxCardsProps {
 const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const progress = useMotionValue(0);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   useLayoutEffect(() => {
     if (!containerRef.current || !stickyRef.current) return;
 
-    // Shorter scroll distance for more responsive feel
-    const scrollDistance = window.innerHeight * (cards.length - 1) * 0.8;
+    // Even shorter scroll for snappy feel
+    const scrollDistance = window.innerHeight * (cards.length - 1) * 0.6;
 
     const trigger = ScrollTrigger.create({
       trigger: containerRef.current,
@@ -43,23 +35,18 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
       end: `+=${scrollDistance}`,
       pin: stickyRef.current,
       pinSpacing: true,
-      scrub: 0.3, // Lower scrub = more responsive
+      scrub: 0.1, // Ultra responsive
       onUpdate: (self) => {
         progress.set(self.progress);
       },
     });
 
-    return () => {
-      trigger.kill();
-    };
+    return () => trigger.kill();
   }, [cards.length, progress]);
 
   return (
     <div ref={containerRef} className="relative">
-      <div 
-        ref={stickyRef} 
-        className="h-screen w-full overflow-hidden"
-      >
+      <div ref={stickyRef} className="h-screen w-full overflow-hidden">
         {cards.map((card, index) => (
           <StackingCard
             key={index}
@@ -67,7 +54,6 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
             index={index}
             totalCards={cards.length}
             progress={progress}
-            isMobile={isMobile}
           />
         ))}
       </div>
@@ -80,81 +66,56 @@ interface StackingCardProps {
   index: number;
   totalCards: number;
   progress: ReturnType<typeof useMotionValue<number>>;
-  isMobile: boolean;
 }
 
-const StackingCard = ({ card, index, totalCards, progress, isMobile }: StackingCardProps) => {
+const StackingCard = ({ card, index, totalCards, progress }: StackingCardProps) => {
   const segmentSize = 1 / (totalCards - 1 || 1);
   const isFirstCard = index === 0;
   
   const cardStart = isFirstCard ? 0 : (index - 1) * segmentSize;
   const cardEnd = isFirstCard ? 0 : index * segmentSize;
 
-  // Simple Y transform - no spring for direct response
+  // Only Y transform - cheapest animation
   const y = useTransform(
     progress,
-    isFirstCard 
-      ? [0, 1] 
-      : [cardStart, cardEnd],
-    isFirstCard 
-      ? ["0%", "0%"] 
-      : ["100%", "0%"]
+    isFirstCard ? [0, 1] : [cardStart, cardEnd],
+    isFirstCard ? [0, 0] : [100, 0] // Use numbers, not percentages
   );
 
-  // Simple opacity - faster fade in
-  const opacity = useTransform(
-    progress,
-    isFirstCard 
-      ? [0, 1]
-      : [cardStart, cardStart + segmentSize * 0.1],
-    isFirstCard 
-      ? [1, 1]
-      : [0.5, 1]
-  );
-
-  // Dim previous cards
+  // Simple opacity for previous cards (NO filter/brightness - expensive!)
   const nextCardProgress = index * segmentSize;
-  const nextCardEnd = Math.min(1, (index + 1) * segmentSize);
   const hasNextCard = index < totalCards - 1;
   
-  const dimming = useTransform(
+  const overlayOpacity = useTransform(
     progress,
-    [nextCardProgress, nextCardEnd],
-    hasNextCard ? [1, 0.6] : [1, 1]
-  );
-
-  const shrink = useTransform(
-    progress,
-    [nextCardProgress, nextCardEnd],
-    hasNextCard ? [1, 0.92] : [1, 1]
+    [nextCardProgress, Math.min(1, (index + 1) * segmentSize)],
+    hasNextCard ? [0, 0.5] : [0, 0]
   );
 
   return (
     <motion.div
       className={cn(
-        "absolute inset-0 w-full h-full overflow-hidden",
+        "absolute inset-0 w-full h-full",
         "rounded-t-[2rem] sm:rounded-t-[3rem]",
         card.lightBg,
         card.darkBg
       )}
       style={{
-        y,
-        opacity,
+        y: useTransform(y, (v) => `${v}%`),
         zIndex: index + 1,
-        // GPU acceleration
-        transform: "translateZ(0)",
-        backfaceVisibility: "hidden",
+        willChange: "transform",
       }}
     >
-      <motion.div
-        className="w-full h-full flex items-center justify-center p-6 sm:p-12"
-        style={{
-          scale: shrink,
-          filter: useTransform(dimming, (d) => `brightness(${d})`),
-        }}
-      >
+      {/* Content */}
+      <div className="w-full h-full flex items-center justify-center p-6 sm:p-12">
         {card.content}
-      </motion.div>
+      </div>
+      
+      {/* Dimming overlay - uses opacity instead of filter (much faster) */}
+      <motion.div
+        className="absolute inset-0 bg-black pointer-events-none rounded-t-[2rem] sm:rounded-t-[3rem]"
+        style={{ opacity: overlayOpacity }}
+      />
     </motion.div>
   );
 };
