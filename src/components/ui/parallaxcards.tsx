@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, useLayoutEffect } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
@@ -23,11 +23,6 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
   const stickyRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const progress = useMotionValue(0);
-  const smoothProgress = useSpring(progress, {
-    stiffness: 60,
-    damping: 25,
-    restDelta: 0.0001,
-  });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -39,7 +34,8 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
   useLayoutEffect(() => {
     if (!containerRef.current || !stickyRef.current) return;
 
-    const scrollDistance = window.innerHeight * (cards.length - 1);
+    // Shorter scroll distance for more responsive feel
+    const scrollDistance = window.innerHeight * (cards.length - 1) * 0.8;
 
     const trigger = ScrollTrigger.create({
       trigger: containerRef.current,
@@ -47,7 +43,7 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
       end: `+=${scrollDistance}`,
       pin: stickyRef.current,
       pinSpacing: true,
-      scrub: 0.8,
+      scrub: 0.3, // Lower scrub = more responsive
       onUpdate: (self) => {
         progress.set(self.progress);
       },
@@ -70,7 +66,7 @@ const ParallaxCards = ({ cards }: ParallaxCardsProps) => {
             card={card}
             index={index}
             totalCards={cards.length}
-            progress={smoothProgress}
+            progress={progress}
             isMobile={isMobile}
           />
         ))}
@@ -83,7 +79,7 @@ interface StackingCardProps {
   card: CardData;
   index: number;
   totalCards: number;
-  progress: ReturnType<typeof useSpring>;
+  progress: ReturnType<typeof useMotionValue<number>>;
   isMobile: boolean;
 }
 
@@ -91,13 +87,10 @@ const StackingCard = ({ card, index, totalCards, progress, isMobile }: StackingC
   const segmentSize = 1 / (totalCards - 1 || 1);
   const isFirstCard = index === 0;
   
-  // Calculate animation timing for each card
-  // First card is always visible
-  // Subsequent cards animate from (index-1)*segmentSize to index*segmentSize
   const cardStart = isFirstCard ? 0 : (index - 1) * segmentSize;
   const cardEnd = isFirstCard ? 0 : index * segmentSize;
 
-  // Y position - first card stays, others slide up from bottom
+  // Simple Y transform - no spring for direct response
   const y = useTransform(
     progress,
     isFirstCard 
@@ -108,29 +101,18 @@ const StackingCard = ({ card, index, totalCards, progress, isMobile }: StackingC
       : ["100%", "0%"]
   );
 
-  // Scale animation
-  const scale = useTransform(
-    progress,
-    isFirstCard 
-      ? [0, 1]
-      : [cardStart, cardStart + segmentSize * 0.3, cardEnd],
-    isFirstCard 
-      ? [1, 1]
-      : [0.85, 0.92, 1]
-  );
-
-  // Opacity
+  // Simple opacity - faster fade in
   const opacity = useTransform(
     progress,
     isFirstCard 
       ? [0, 1]
-      : [cardStart, cardStart + segmentSize * 0.15],
+      : [cardStart, cardStart + segmentSize * 0.1],
     isFirstCard 
       ? [1, 1]
-      : [0, 1]
+      : [0.5, 1]
   );
 
-  // Dim previous cards when next card arrives
+  // Dim previous cards
   const nextCardProgress = index * segmentSize;
   const nextCardEnd = Math.min(1, (index + 1) * segmentSize);
   const hasNextCard = index < totalCards - 1;
@@ -138,49 +120,37 @@ const StackingCard = ({ card, index, totalCards, progress, isMobile }: StackingC
   const dimming = useTransform(
     progress,
     [nextCardProgress, nextCardEnd],
-    hasNextCard ? [1, 0.55] : [1, 1]
+    hasNextCard ? [1, 0.6] : [1, 1]
   );
 
   const shrink = useTransform(
     progress,
     [nextCardProgress, nextCardEnd],
-    hasNextCard ? [1, 0.9] : [1, 1]
-  );
-
-  const filterValue = useTransform(dimming, (d) => `brightness(${d})`);
-
-  // Shadow
-  const shadowOpacity = useTransform(
-    progress,
-    isFirstCard ? [0, 1] : [cardStart, cardEnd],
-    isFirstCard ? [0, 0] : [0, 0.6]
+    hasNextCard ? [1, 0.92] : [1, 1]
   );
 
   return (
     <motion.div
       className={cn(
-        "absolute inset-0 w-full h-full overflow-hidden will-change-transform",
+        "absolute inset-0 w-full h-full overflow-hidden",
         "rounded-t-[2rem] sm:rounded-t-[3rem]",
-        "backface-hidden",
         card.lightBg,
         card.darkBg
       )}
       style={{
         y,
-        scale,
         opacity,
         zIndex: index + 1,
-        boxShadow: useTransform(
-          shadowOpacity,
-          (o) => `0 -40px 100px rgba(0, 0, 0, ${o})`
-        ),
+        // GPU acceleration
+        transform: "translateZ(0)",
+        backfaceVisibility: "hidden",
       }}
     >
       <motion.div
         className="w-full h-full flex items-center justify-center p-6 sm:p-12"
         style={{
           scale: shrink,
-          filter: filterValue,
+          filter: useTransform(dimming, (d) => `brightness(${d})`),
         }}
       >
         {card.content}
