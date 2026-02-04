@@ -1,6 +1,7 @@
 import { useRef, ReactNode, forwardRef } from 'react';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
+import { useSound } from '@/contexts/SoundContext';
 
 interface MagneticButtonProps {
   children: ReactNode;
@@ -12,6 +13,7 @@ const MagneticButton = forwardRef<HTMLButtonElement, MagneticButtonProps>(
   ({ children, className = '', onClick }, ref) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     const actualRef = (ref as React.RefObject<HTMLButtonElement>) || buttonRef;
+    const { playHover, playClick } = useSound();
 
     const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!actualRef.current) return;
@@ -39,13 +41,23 @@ const MagneticButton = forwardRef<HTMLButtonElement, MagneticButtonProps>(
       });
     };
 
+    const handleMouseEnter = () => {
+      playHover();
+    };
+
+    const handleClick = () => {
+      playClick();
+      onClick?.();
+    };
+
     return (
       <motion.button
         ref={actualRef}
         className={`relative overflow-hidden group ${className}`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        onClick={onClick}
+        onMouseEnter={handleMouseEnter}
+        onClick={handleClick}
         whileTap={{ scale: 0.95 }}
       >
         <span className="relative z-10">{children}</span>

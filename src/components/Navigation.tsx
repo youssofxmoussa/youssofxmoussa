@@ -1,10 +1,22 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Volume2, VolumeX } from 'lucide-react';
+import { useSound } from '@/contexts/SoundContext';
 
 const Navigation = () => {
   const navItems = ['About', 'Work', 'Skills', 'Contact'];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { playClick, playHover, playWhoosh, soundEnabled, toggleSound } = useSound();
+
+  const handleNavClick = () => {
+    playClick();
+    setIsMenuOpen(false);
+  };
+
+  const handleMenuToggle = () => {
+    playWhoosh();
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <>
@@ -20,6 +32,8 @@ const Navigation = () => {
             href="#"
             className="font-display text-lg sm:text-xl font-bold text-foreground z-50"
             whileHover={{ scale: 1.05 }}
+            onMouseEnter={playHover}
+            onClick={playClick}
           >
             YM<span className="text-muted-foreground">.</span>
           </motion.a>
@@ -34,20 +48,40 @@ const Navigation = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                onMouseEnter={playHover}
+                onClick={playClick}
               >
                 {item}
               </motion.a>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden z-50 p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Sound Toggle & Mobile Menu Button */}
+          <div className="flex items-center gap-2">
+            {/* Sound Toggle */}
+            <motion.button
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => {
+                playClick();
+                toggleSound();
+              }}
+              onMouseEnter={playHover}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label={soundEnabled ? 'Mute sounds' : 'Enable sounds'}
+            >
+              {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+            </motion.button>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden z-50 p-2 text-foreground"
+              onClick={handleMenuToggle}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
 
           {/* Desktop CTA Button */}
           <motion.a
@@ -55,6 +89,8 @@ const Navigation = () => {
             className="hidden md:block px-6 py-2 bg-foreground text-background rounded-full font-medium text-sm hover:glow-primary transition-shadow"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onMouseEnter={playHover}
+            onClick={playClick}
           >
             Let's Talk
           </motion.a>
@@ -76,7 +112,8 @@ const Navigation = () => {
                 <motion.a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleNavClick}
+                  onMouseEnter={playHover}
                   className="text-3xl font-display font-bold text-foreground hover:text-primary transition-colors"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -87,7 +124,8 @@ const Navigation = () => {
               ))}
               <motion.a
                 href="#contact"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={handleNavClick}
+                onMouseEnter={playHover}
                 className="mt-8 px-8 py-4 bg-foreground text-background rounded-full font-medium text-lg"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}

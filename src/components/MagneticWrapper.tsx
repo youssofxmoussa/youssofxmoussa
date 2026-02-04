@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useSound } from '@/contexts/SoundContext';
 
 interface MagneticWrapperProps {
   children: React.ReactNode;
@@ -18,6 +19,7 @@ const MagneticWrapper = ({
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const { playHover } = useSound();
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -47,6 +49,7 @@ const MagneticWrapper = ({
 
   const handleMouseEnter = () => {
     setIsHovered(true);
+    playHover();
   };
 
   return (
