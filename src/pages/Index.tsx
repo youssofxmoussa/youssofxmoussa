@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
@@ -18,6 +18,12 @@ import ParallaxSection from '@/components/ParallaxSection';
 import Footer from '@/components/Footer';
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 import { ArrowDown, Send, MessageCircle } from 'lucide-react';
+import CinematicPreloader from '@/components/CinematicPreloader';
+import InteractiveParticles from '@/components/InteractiveParticles';
+import GlitchText from '@/components/GlitchText';
+import MorphingText from '@/components/MorphingText';
+import MagneticWrapper from '@/components/MagneticWrapper';
+import ScrollRevealSection from '@/components/ScrollRevealSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +31,13 @@ const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const triggersRef = useRef<ScrollTrigger[]>([]);
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [contentReady, setContentReady] = useState(false);
+
+  const handlePreloaderComplete = () => {
+    setShowPreloader(false);
+    setContentReady(true);
+  };
 
   useSmoothScroll();
 
@@ -77,8 +90,16 @@ const Index = () => {
   const nameLetters = 'Youssof'.split('');
   const surnameLetters = 'Moussa'.split('');
 
+  const roles = ['Developer', 'Designer', 'Creator', 'Innovator'];
+
   return (
     <div className="relative bg-background text-foreground overflow-x-hidden">
+      {/* Cinematic Preloader */}
+      {showPreloader && <CinematicPreloader onComplete={handlePreloaderComplete} />}
+      
+      {/* Interactive Particles Background */}
+      <InteractiveParticles />
+      
       <CustomCursor />
       <NoiseBackground />
       <Navigation />
@@ -92,16 +113,18 @@ const Index = () => {
         <AnimatedSVG />
         
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          {/* Tagline */}
+          {/* Tagline with Glitch Effect */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={contentReady ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-4 sm:mb-6 md:mb-8"
           >
-            <span className="inline-block px-3 py-2 sm:px-5 sm:py-2.5 rounded-full border border-primary/20 text-primary text-xs sm:text-sm font-medium tracking-widest">
-              <ScrambleText text="CREATIVE DEVELOPER" delay={800} />
-            </span>
+            <MagneticWrapper strength={0.2}>
+              <span className="inline-block px-3 py-2 sm:px-5 sm:py-2.5 rounded-full border border-primary/20 text-primary text-xs sm:text-sm font-medium tracking-widest">
+                <GlitchText text="CREATIVE DEVELOPER" glitchOnHover continuous />
+              </span>
+            </MagneticWrapper>
           </motion.div>
 
           {/* Main Title with letter animation */}
@@ -122,30 +145,35 @@ const Index = () => {
             </span>
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle with Morphing Text */}
           <motion.p
             className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-10 md:mb-14 font-light px-4 sm:px-0"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={contentReady ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            Crafting <span className="text-foreground font-medium">immersive digital experiences</span> with 
+            I'm a <MorphingText words={roles} className="text-foreground font-medium" /> crafting{' '}
+            <span className="text-foreground font-medium">immersive digital experiences</span> with 
             silky-smooth animations and pixel-perfect precision.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons with Magnetic Effect */}
           <motion.div
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0"
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={contentReady ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 1.4 }}
           >
-            <MagneticButton className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-foreground text-background rounded-full font-medium text-sm sm:text-base hover:glow-primary transition-all">
-              View My Work
-            </MagneticButton>
-            <MagneticButton className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 border border-primary/30 rounded-full font-medium text-sm sm:text-base text-foreground hover:border-foreground transition-all">
-              Get In Touch
-            </MagneticButton>
+            <MagneticWrapper strength={0.4}>
+              <MagneticButton className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-foreground text-background rounded-full font-medium text-sm sm:text-base hover:glow-primary transition-all">
+                <GlitchText text="View My Work" glitchOnHover />
+              </MagneticButton>
+            </MagneticWrapper>
+            <MagneticWrapper strength={0.4}>
+              <MagneticButton className="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 border border-primary/30 rounded-full font-medium text-sm sm:text-base text-foreground hover:border-foreground transition-all">
+                <GlitchText text="Get In Touch" glitchOnHover />
+              </MagneticButton>
+            </MagneticWrapper>
           </motion.div>
         </div>
 
@@ -182,27 +210,29 @@ const Index = () => {
         />
       </section>
 
-      {/* About Section with Projects */}
+      {/* About Section with Projects - Dramatic Reveal */}
       <section className="py-20 sm:py-28 md:py-40 px-4 sm:px-6 md:px-12" id="work">
         <div className="max-w-6xl mx-auto">
-          <ScrollReveal animation="fadeUp">
+          <ScrollRevealSection effect="glitch">
             <TextReveal 
               text="Building the future of the web with meticulous attention to detail and unwavering commitment to craft."
               className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-foreground mb-8 sm:mb-12 md:mb-16"
             />
-          </ScrollReveal>
+          </ScrollRevealSection>
           
-          <ScrollReveal animation="blur" delay={0.2}>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mb-12 sm:mb-16 md:mb-24 font-light leading-relaxed">
+          <ScrollRevealSection effect="curtain" className="mb-12 sm:mb-16 md:mb-24">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl font-light leading-relaxed">
               With years of experience in crafting digital experiences, I specialize in creating 
               websites and applications that not only look stunning but perform exceptionally. 
               Every pixel, every animation, every interaction is thoughtfully designed to 
               leave a lasting impression.
             </p>
-          </ScrollReveal>
+          </ScrollRevealSection>
 
           {/* Projects Grid */}
-          <ProjectShowcase />
+          <ScrollRevealSection effect="zoom">
+            <ProjectShowcase />
+          </ScrollRevealSection>
         </div>
       </section>
 
@@ -215,24 +245,24 @@ const Index = () => {
       {/* Skills Section */}
       <SkillsSection />
 
-      {/* Contact Section */}
+      {/* Contact Section - Epic Reveal */}
       <section className="py-20 sm:py-28 md:py-40 px-4 sm:px-6 md:px-12 border-t border-border/50" id="contact">
         <div className="max-w-4xl mx-auto text-center">
-          <ScrollReveal animation="scale">
+          <ScrollRevealSection effect="split">
             <span className="text-xs font-medium tracking-[0.3em] uppercase text-muted-foreground mb-4 sm:mb-6 block">
-              Let's Connect
+              <GlitchText text="Let's Connect" continuous />
             </span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-6 sm:mb-8 md:mb-10 text-foreground">
-              Got a project in mind?
+              <GlitchText text="Got a project in mind?" glitchOnHover />
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-10 sm:mb-12 md:mb-16 max-w-2xl mx-auto font-light px-4 sm:px-0">
               I'm always excited to collaborate on innovative projects. 
               Whether you have a detailed brief or just a spark of an idea, let's make it happen.
             </p>
-          </ScrollReveal>
+          </ScrollRevealSection>
 
           {/* Contact Links */}
-          <ScrollReveal animation="fadeUp" delay={0.2}>
+          <ScrollRevealSection effect="curtain">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-12 md:mb-16 px-4 sm:px-0">
               <a 
                 href="https://t.me/youssofxmoussa" 
@@ -264,7 +294,7 @@ const Index = () => {
                 WhatsApp
               </a>
             </div>
-          </ScrollReveal>
+          </ScrollRevealSection>
         </div>
       </section>
 
