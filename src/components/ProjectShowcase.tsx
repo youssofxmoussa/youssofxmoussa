@@ -187,44 +187,44 @@ const ProjectShowcase = () => {
         ))}
       </div>
 
-      {/* Full-screen case study modal - Simple, fast */}
+      {/* Full-screen case study modal */}
       {selectedProject && (
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md"
+            className="fixed inset-0 z-50 bg-background"
             onClick={() => setSelectedProject(null)}
           />
           
-          {/* Modal Content */}
+          {/* Modal Content - Full Screen */}
           <div
-            className="fixed inset-4 sm:inset-8 z-50 bg-card border border-border rounded-2xl overflow-y-auto"
+            className="fixed inset-0 z-50 bg-background overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-colors z-10 bg-card"
+              className="fixed top-4 right-4 sm:top-8 sm:right-8 w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-colors z-[60] bg-background/80 backdrop-blur-sm"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
 
-            <div className="p-6 sm:p-10 lg:p-16 max-w-5xl mx-auto">
+            <div className="min-h-screen p-6 sm:p-12 lg:p-20 max-w-6xl mx-auto">
               {/* Header */}
-              <div className="mb-8 sm:mb-12">
-                <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-2 sm:mb-4 block">
+              <div className="mb-12 sm:mb-16 pt-8 sm:pt-4">
+                <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-4 block">
                   {selectedProject.category} — {selectedProject.year}
                 </span>
-                <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4 sm:mb-6">
+                <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 sm:mb-8">
                   {selectedProject.title}
                 </h1>
-                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl">
+                <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-4xl leading-relaxed">
                   {selectedProject.longDescription}
                 </p>
               </div>
 
-              {/* Project image */}
-              <div className="w-full h-[40vh] sm:h-[50vh] rounded-xl sm:rounded-2xl border border-border mb-8 sm:mb-12 overflow-hidden">
+              {/* Project image - Larger */}
+              <div className="w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] rounded-2xl sm:rounded-3xl border border-border mb-12 sm:mb-16 overflow-hidden">
                 <img 
                   src={selectedProject.image} 
                   alt={selectedProject.title}
@@ -233,15 +233,15 @@ const ProjectShowcase = () => {
               </div>
 
               {/* Technologies */}
-              <div className="mb-8 sm:mb-12">
-                <h3 className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-4 sm:mb-6">
+              <div className="mb-12 sm:mb-16">
+                <h3 className="text-sm font-medium tracking-wider uppercase text-primary mb-6 sm:mb-8">
                   Technologies Used
                 </h3>
-                <div className="flex flex-wrap gap-2 sm:gap-3">
+                <div className="flex flex-wrap gap-3 sm:gap-4">
                   {selectedProject.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-border text-xs sm:text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
+                      className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-border text-sm sm:text-base font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
                     >
                       {tech}
                     </span>
@@ -250,9 +250,9 @@ const ProjectShowcase = () => {
               </div>
 
               {/* CTA */}
-              <div className="flex gap-4">
-                <button className="px-6 py-3 sm:px-8 sm:py-4 bg-primary text-primary-foreground rounded-full font-medium text-sm sm:text-lg transition-all inline-flex items-center gap-2 hover:opacity-90">
-                  <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+              <div className="flex gap-4 pb-12">
+                <button className="px-8 py-4 sm:px-10 sm:py-5 bg-primary text-primary-foreground rounded-full font-medium text-base sm:text-lg transition-all inline-flex items-center gap-3 hover:opacity-90">
+                  <ExternalLink className="w-5 h-5" />
                   Visit Live Site
                 </button>
               </div>
