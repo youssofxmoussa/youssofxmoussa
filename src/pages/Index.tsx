@@ -24,6 +24,7 @@ import GlitchText from '@/components/GlitchText';
 import MorphingText from '@/components/MorphingText';
 import MagneticWrapper from '@/components/MagneticWrapper';
 import ScrollRevealSection from '@/components/ScrollRevealSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -244,6 +245,9 @@ const Index = () => {
 
       {/* Skills Section */}
       <SkillsSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* Contact Section - Epic Reveal */}
       <section className="py-20 sm:py-28 md:py-40 px-4 sm:px-6 md:px-12 border-t border-border/50" id="contact">
