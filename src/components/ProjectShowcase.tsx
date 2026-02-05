@@ -187,114 +187,79 @@ const ProjectShowcase = () => {
         ))}
       </div>
 
-      {/* Full-screen case study modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl overflow-y-auto"
+      {/* Full-screen case study modal - Simple, fast */}
+      {selectedProject && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md"
             onClick={() => setSelectedProject(null)}
+          />
+          
+          {/* Modal Content */}
+          <div
+            className="fixed inset-4 sm:inset-8 z-50 bg-card border border-border rounded-2xl overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 100, opacity: 0 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="min-h-screen px-4 sm:px-6 md:px-12 py-16 sm:py-20"
-              onClick={(e) => e.stopPropagation()}
+            {/* Close button */}
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-colors z-10 bg-card"
             >
-              {/* Close button */}
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="fixed top-4 right-4 sm:top-8 sm:right-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-colors z-10 bg-background/80 backdrop-blur-sm"
-              >
-                <X className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
+              <X className="w-4 h-4" />
+            </button>
 
-              <div className="max-w-5xl mx-auto">
-                {/* Header */}
-                <div className="mb-8 sm:mb-12 lg:mb-16">
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-2 sm:mb-4 block"
-                  >
-                    {selectedProject.category} — {selectedProject.year}
-                  </motion.span>
-                  <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4 sm:mb-6"
-                  >
-                    {selectedProject.title}
-                  </motion.h1>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl"
-                  >
-                    {selectedProject.longDescription}
-                  </motion.p>
-                </div>
-
-                {/* Project image */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="w-full h-[40vh] sm:h-[50vh] lg:h-[60vh] rounded-xl sm:rounded-2xl border border-border mb-8 sm:mb-12 lg:mb-16 overflow-hidden"
-                >
-                  <img 
-                    src={selectedProject.image} 
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-
-                {/* Technologies */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="mb-8 sm:mb-12 lg:mb-16"
-                >
-                  <h3 className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-4 sm:mb-6">
-                    Technologies Used
-                  </h3>
-                  <div className="flex flex-wrap gap-2 sm:gap-3">
-                    {selectedProject.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-border text-xs sm:text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* CTA */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="flex gap-4"
-                >
-                  <button className="px-6 py-3 sm:px-8 sm:py-4 bg-primary text-primary-foreground rounded-full font-medium text-sm sm:text-lg hover:glow-primary transition-all inline-flex items-center gap-2">
-                    <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                    Visit Live Site
-                  </button>
-                </motion.div>
+            <div className="p-6 sm:p-10 lg:p-16 max-w-5xl mx-auto">
+              {/* Header */}
+              <div className="mb-8 sm:mb-12">
+                <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-2 sm:mb-4 block">
+                  {selectedProject.category} — {selectedProject.year}
+                </span>
+                <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4 sm:mb-6">
+                  {selectedProject.title}
+                </h1>
+                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl">
+                  {selectedProject.longDescription}
+                </p>
               </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+              {/* Project image */}
+              <div className="w-full h-[40vh] sm:h-[50vh] rounded-xl sm:rounded-2xl border border-border mb-8 sm:mb-12 overflow-hidden">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Technologies */}
+              <div className="mb-8 sm:mb-12">
+                <h3 className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-4 sm:mb-6">
+                  Technologies Used
+                </h3>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  {selectedProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-border text-xs sm:text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="flex gap-4">
+                <button className="px-6 py-3 sm:px-8 sm:py-4 bg-primary text-primary-foreground rounded-full font-medium text-sm sm:text-lg transition-all inline-flex items-center gap-2 hover:opacity-90">
+                  <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                  Visit Live Site
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };
