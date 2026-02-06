@@ -1,0 +1,25 @@
+# =====================================================
+# SECURITY.TXT - Youssof Moussa Portfolio
+# Security Contact Information (RFC 9116)
+# Last Updated: 2026-02-06
+# =====================================================
+
+# Contact for security vulnerability reports
+Contact: https://t.me/youssofxmoussa
+Contact: https://wa.me/96171463532
+
+# Preferred languages for communication
+Preferred-Languages: en, ar
+
+# Security policy expiration
+Expires: 2027-02-06T00:00:00.000Z
+
+# Canonical URL for this file
+Canonical: https://youssofmoussa.com/.well-known/security.txt
+
+# Hiring information
+Hiring: https://youssofmoussa.com/#contact
+
+# =====================================================
+# END OF SECURITY.TXT
+# =====================================================
