@@ -71,6 +71,18 @@ const ProjectShowcase = () => {
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const triggersRef = useRef<ScrollTrigger[]>([]);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedProject]);
+
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
     
@@ -189,76 +201,69 @@ const ProjectShowcase = () => {
 
       {/* Full-screen case study modal */}
       {selectedProject && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 z-50 bg-background"
+        <div
+          className="fixed inset-0 z-50 w-screen h-screen bg-background overflow-y-auto overscroll-contain"
+          style={{ touchAction: 'pan-y' }}
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+        >
+          {/* Close button */}
+          <button
             onClick={() => setSelectedProject(null)}
-          />
-          
-          {/* Modal Content - Full Screen */}
-          <div
-            className="fixed inset-0 z-50 bg-background overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed top-4 right-4 sm:top-8 sm:right-8 w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-colors z-[60] bg-background/80 backdrop-blur-sm"
           >
-            {/* Close button */}
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="fixed top-4 right-4 sm:top-8 sm:right-8 w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:text-primary hover:border-primary transition-colors z-[60] bg-background/80 backdrop-blur-sm"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <X className="w-5 h-5" />
+          </button>
 
-            <div className="min-h-screen p-6 sm:p-12 lg:p-20 max-w-6xl mx-auto">
-              {/* Header */}
-              <div className="mb-12 sm:mb-16 pt-8 sm:pt-4">
-                <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-4 block">
-                  {selectedProject.category} — {selectedProject.year}
-                </span>
-                <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 sm:mb-8">
-                  {selectedProject.title}
-                </h1>
-                <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-4xl leading-relaxed">
-                  {selectedProject.longDescription}
-                </p>
-              </div>
+          <div className="min-h-full p-6 sm:p-12 lg:p-20 max-w-6xl mx-auto">
+            {/* Header */}
+            <div className="mb-12 sm:mb-16 pt-8 sm:pt-4">
+              <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-primary mb-4 block">
+                {selectedProject.category} — {selectedProject.year}
+              </span>
+              <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 sm:mb-8">
+                {selectedProject.title}
+              </h1>
+              <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-4xl leading-relaxed">
+                {selectedProject.longDescription}
+              </p>
+            </div>
 
-              {/* Project image - Larger */}
-              <div className="w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] rounded-2xl sm:rounded-3xl border border-border mb-12 sm:mb-16 overflow-hidden">
-                <img 
-                  src={selectedProject.image} 
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            {/* Project image - Larger */}
+            <div className="w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] rounded-2xl sm:rounded-3xl border border-border mb-12 sm:mb-16 overflow-hidden">
+              <img 
+                src={selectedProject.image} 
+                alt={selectedProject.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-              {/* Technologies */}
-              <div className="mb-12 sm:mb-16">
-                <h3 className="text-sm font-medium tracking-wider uppercase text-primary mb-6 sm:mb-8">
-                  Technologies Used
-                </h3>
-                <div className="flex flex-wrap gap-3 sm:gap-4">
-                  {selectedProject.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-border text-sm sm:text-base font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* CTA */}
-              <div className="flex gap-4 pb-12">
-                <button className="px-8 py-4 sm:px-10 sm:py-5 bg-primary text-primary-foreground rounded-full font-medium text-base sm:text-lg transition-all inline-flex items-center gap-3 hover:opacity-90">
-                  <ExternalLink className="w-5 h-5" />
-                  Visit Live Site
-                </button>
+            {/* Technologies */}
+            <div className="mb-12 sm:mb-16">
+              <h3 className="text-sm font-medium tracking-wider uppercase text-primary mb-6 sm:mb-8">
+                Technologies Used
+              </h3>
+              <div className="flex flex-wrap gap-3 sm:gap-4">
+                {selectedProject.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border border-border text-sm sm:text-base font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
+
+            {/* CTA */}
+            <div className="flex gap-4 pb-12">
+              <button className="px-8 py-4 sm:px-10 sm:py-5 bg-primary text-primary-foreground rounded-full font-medium text-base sm:text-lg transition-all inline-flex items-center gap-3 hover:opacity-90">
+                <ExternalLink className="w-5 h-5" />
+                Visit Live Site
+              </button>
+            </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );
