@@ -1,14 +1,250 @@
+# =====================================================
+# ROBOTS.TXT - Youssof Moussa Portfolio
+# Professional Web Crawler Configuration
+# Last Updated: 2026-02-06
+# =====================================================
+
+# -----------------------------------------------------
+# GENERAL RULES - All Search Engines
+# -----------------------------------------------------
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# Block development and system files
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /*.json$
+Disallow: /*.config.js$
+Disallow: /*.config.ts$
+
+# Block asset source files (allow compiled assets)
+Disallow: /*.tsx$
+Disallow: /*.ts$
+Disallow: /*.jsx$
+Disallow: /*.css$
+
+# -----------------------------------------------------
+# GOOGLE SEARCH BOT
+# -----------------------------------------------------
 User-agent: Googlebot
 Allow: /
+Allow: /sitemap.xml
+Crawl-delay: 1
 
-User-agent: Bingbot
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Google Mobile Bot
+User-agent: Googlebot-Mobile
 Allow: /
 
+# Google News Bot
+User-agent: Googlebot-News
+Allow: /
+
+# Google Video Bot
+User-agent: Googlebot-Video
+Allow: /
+
+# Google AdsBot
+User-agent: AdsBot-Google
+Allow: /
+
+# Google AdsBot Mobile
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+# -----------------------------------------------------
+# BING SEARCH BOT
+# -----------------------------------------------------
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: BingPreview
+Allow: /
+
+# -----------------------------------------------------
+# SOCIAL MEDIA BOTS
+# -----------------------------------------------------
+# Twitter/X Bot
 User-agent: Twitterbot
 Allow: /
 
+# Facebook Bot
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: Facebot
 Allow: /
+
+# LinkedIn Bot
+User-agent: LinkedInBot
+Allow: /
+
+# Pinterest Bot
+User-agent: Pinterest
+Allow: /
+
+# Slack Bot
+User-agent: Slackbot
+Allow: /
+
+# Discord Bot
+User-agent: Discordbot
+Allow: /
+
+# Telegram Bot
+User-agent: TelegramBot
+Allow: /
+
+# WhatsApp Bot
+User-agent: WhatsApp
+Allow: /
+
+# -----------------------------------------------------
+# OTHER MAJOR SEARCH ENGINES
+# -----------------------------------------------------
+# Yahoo Bot
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo Bot
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Baidu Bot (China)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Yandex Bot (Russia)
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexImages
+Allow: /
+
+# Sogou Bot (China)
+User-agent: Sogou
+Allow: /
+Crawl-delay: 2
+
+# Naver Bot (Korea)
+User-agent: Yeti
+Allow: /
+Crawl-delay: 2
+
+# -----------------------------------------------------
+# SEO & ANALYTICS TOOLS
+# -----------------------------------------------------
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 5
+
+User-agent: DotBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: rogerbot
+Allow: /
+Crawl-delay: 5
+
+# -----------------------------------------------------
+# ARCHIVE BOTS
+# -----------------------------------------------------
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 10
+
+User-agent: archive.org_bot
+Allow: /
+Crawl-delay: 10
+
+# -----------------------------------------------------
+# BLOCK MALICIOUS/SPAM BOTS
+# -----------------------------------------------------
+User-agent: MegaIndex.ru
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+# -----------------------------------------------------
+# AI TRAINING BOTS (Optional - Block if desired)
+# -----------------------------------------------------
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# -----------------------------------------------------
+# SITEMAP LOCATION
+# -----------------------------------------------------
+Sitemap: https://youssofmoussa.com/sitemap.xml
+
+# -----------------------------------------------------
+# HOST DIRECTIVE (for Yandex)
+# -----------------------------------------------------
+Host: https://youssofmoussa.com
+
+# =====================================================
+# END OF ROBOTS.TXT
+# =====================================================
