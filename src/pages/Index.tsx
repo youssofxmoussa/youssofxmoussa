@@ -278,7 +278,7 @@ const Index = () => {
                 Telegram
               </a>
               <a 
-                href="https://ig.me/m/youssof.moussa?text=👋%20Hello%20Youssof!%0A%0AI%20visited%20your%20portfolio%20and%20loved%20your%20creative%20work!%20✨%0A%0AI'm%20interested%20in%20working%20with%20you%20on%20a%20project.%0A%0A📌%20Project%20Type:%20%5BWeb%20/%20Mobile%20/%20Design%5D%0A💡%20Brief:%20%5BDescribe%20your%20idea%5D%0A%0ALooking%20forward%20to%20connecting!%20🚀" 
+                href="https://www.instagram.com/youssof.moussa/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto group px-6 sm:px-8 py-3 sm:py-4 border border-primary/30 rounded-full font-medium text-sm sm:text-base text-foreground hover:bg-foreground hover:text-background transition-all inline-flex items-center justify-center gap-3"
