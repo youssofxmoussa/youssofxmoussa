@@ -1,48 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--
+=====================================================
+SITEMAP.XML - Youssof Moussa Portfolio
+Professional XML Sitemap for Search Engine Optimization
+Domain: youssefxmoussa.vercel.app
+Last Updated: 2026-02-07
+Version: 3.0.0
+
+This sitemap follows the Sitemaps.org protocol (v0.9)
+and includes extended metadata for better SEO.
+=====================================================
+-->
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+  xsi:schemaLocation="
+    http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+    http://www.google.com/schemas/sitemap-image/1.1
+    http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd
+  ">
   
-  <!-- Homepage - Main Entry Point -->
+  <!-- =====================================================
+       HOMEPAGE - Primary Landing Page
+       Priority: 1.0 (Highest)
+       ===================================================== -->
   <url>
     <loc>https://youssefxmoussa.vercel.app/</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    
+    <!-- Multilingual alternate versions -->
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://youssefxmoussa.vercel.app/"/>
+    
+    <!-- Primary OG Image -->
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/og-image.jpg</image:loc>
+      <image:title>Youssof Moussa - Creative Frontend Developer and UI/UX Designer Portfolio</image:title>
+      <image:caption>Professional portfolio showcasing web development and design projects</image:caption>
+      <image:geo_location>Lebanon</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by-nc-nd/4.0/</image:license>
+    </image:image>
+    
+    <!-- Favicon Image -->
+    <image:image>
+      <image:loc>https://i.ibb.co/ZRnM9vHG/favicon.png</image:loc>
+      <image:title>Youssof Moussa Logo</image:title>
+      <image:caption>Personal branding logo for Youssof Moussa</image:caption>
+    </image:image>
   </url>
   
-  <!-- About Section -->
+  <!-- =====================================================
+       HERO SECTION
+       Landing section with introduction
+       ===================================================== -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/#hero</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#hero"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#hero"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#hero"/>
+  </url>
+  
+  <!-- =====================================================
+       ABOUT SECTION
+       Personal information and background
+       ===================================================== -->
   <url>
     <loc>https://youssefxmoussa.vercel.app/#about</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#about"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#about"/>
   </url>
   
-  <!-- Work/Portfolio Section -->
+  <!-- =====================================================
+       PROJECTS SECTION
+       Portfolio showcase
+       ===================================================== -->
   <url>
-    <loc>https://youssefxmoussa.vercel.app/#work</loc>
-    <lastmod>2026-02-06</lastmod>
+    <loc>https://youssefxmoussa.vercel.app/#projects</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#projects"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#projects"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#projects"/>
+    
+    <!-- Project Images -->
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/src/assets/project-ecommerce.jpg</image:loc>
+      <image:title>E-Commerce Platform Project</image:title>
+      <image:caption>Full-stack e-commerce solution with React and Node.js</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/src/assets/project-saas.jpg</image:loc>
+      <image:title>SaaS Dashboard Project</image:title>
+      <image:caption>Modern SaaS application with real-time data visualization</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/src/assets/project-portfolio.jpg</image:loc>
+      <image:title>Portfolio Website Project</image:title>
+      <image:caption>Creative portfolio with immersive animations</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/src/assets/project-realestate.jpg</image:loc>
+      <image:title>Real Estate Platform Project</image:title>
+      <image:caption>Property listing platform with advanced search</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/src/assets/project-fitness.jpg</image:loc>
+      <image:title>Fitness Application Project</image:title>
+      <image:caption>Health and fitness web application</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/src/assets/project-mobile.jpg</image:loc>
+      <image:title>Mobile App Landing Page Project</image:title>
+      <image:caption>High-converting landing page for mobile application</image:caption>
+    </image:image>
   </url>
   
-  <!-- Skills Section -->
+  <!-- =====================================================
+       WORK SECTION
+       Portfolio work showcase
+       ===================================================== -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/#work</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#work"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#work"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#work"/>
+  </url>
+  
+  <!-- =====================================================
+       SKILLS SECTION
+       Technical skills and expertise
+       ===================================================== -->
   <url>
     <loc>https://youssefxmoussa.vercel.app/#skills</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#skills"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#skills"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#skills"/>
   </url>
   
-  <!-- Contact Section -->
+  <!-- =====================================================
+       TOOLS SECTION
+       Technologies and tools used
+       ===================================================== -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/#tools</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#tools"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#tools"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#tools"/>
+  </url>
+  
+  <!-- =====================================================
+       TESTIMONIALS SECTION
+       Client testimonials and reviews
+       ===================================================== -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/#testimonials</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#testimonials"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#testimonials"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#testimonials"/>
+  </url>
+  
+  <!-- =====================================================
+       CONTACT SECTION
+       Contact information and form
+       ===================================================== -->
   <url>
     <loc>https://youssefxmoussa.vercel.app/#contact</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    
+    <xhtml:link rel="alternate" hreflang="en" href="https://youssefxmoussa.vercel.app/#contact"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://youssefxmoussa.vercel.app/#contact"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#contact"/>
+  </url>
+  
+  <!-- =====================================================
+       STATIC RESOURCES
+       Important static files
+       ===================================================== -->
+  
+  <!-- Robots.txt -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/robots.txt</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Manifest -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/manifest.json</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Humans.txt -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/humans.txt</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <!-- Security.txt -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/.well-known/security.txt</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <!-- OG Image -->
+  <url>
+    <loc>https://youssefxmoussa.vercel.app/og-image.jpg</loc>
+    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    
+    <image:image>
+      <image:loc>https://youssefxmoussa.vercel.app/og-image.jpg</image:loc>
+      <image:title>Youssof Moussa Portfolio OG Image</image:title>
+      <image:caption>Professional Open Graph image for social sharing</image:caption>
+    </image:image>
   </url>
 
 </urlset>

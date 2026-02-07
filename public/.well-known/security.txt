@@ -1,24 +1,96 @@
 # =====================================================
 # SECURITY.TXT - Youssof Moussa Portfolio
 # Security Contact Information (RFC 9116)
-# Last Updated: 2026-02-06
+# Domain: youssefxmoussa.vercel.app
+# Last Updated: 2026-02-07
+# Version: 3.0.0
+#
+# This file provides security researchers and others
+# with information about how to report security
+# vulnerabilities and contact the security team.
+#
+# Standard: https://securitytxt.org/
+# RFC: https://www.rfc-editor.org/rfc/rfc9116
 # =====================================================
 
-# Contact for security vulnerability reports
+# -----------------------------------------------------
+# CONTACT INFORMATION
+# How to report security vulnerabilities
+# -----------------------------------------------------
+# Primary Contact - Telegram (Preferred)
 Contact: https://t.me/youssofxmoussa
+
+# Secondary Contact - WhatsApp
 Contact: https://wa.me/96171463532
 
-# Preferred languages for communication
-Preferred-Languages: en, ar
+# Tertiary Contact - Instagram Direct Message
+Contact: https://instagram.com/youssof.moussa
 
-# Security policy expiration
-Expires: 2027-02-06T00:00:00.000Z
+# Email Contact (if available)
+# Contact: mailto:security@youssofmoussa.com
 
-# Canonical URL for this file
-Canonical: https://youssofmoussa.com/.well-known/security.txt
+# -----------------------------------------------------
+# ENCRYPTION
+# PGP key for encrypted communications
+# -----------------------------------------------------
+# Encryption: https://youssefxmoussa.vercel.app/.well-known/pgp-key.txt
 
-# Hiring information
-Hiring: https://youssofmoussa.com/#contact
+# -----------------------------------------------------
+# PREFERRED LANGUAGES
+# Languages accepted for security reports
+# -----------------------------------------------------
+Preferred-Languages: en, ar, fr
+
+# -----------------------------------------------------
+# SECURITY POLICY EXPIRATION
+# When this security.txt should be considered stale
+# -----------------------------------------------------
+Expires: 2027-02-07T00:00:00.000Z
+
+# -----------------------------------------------------
+# CANONICAL URL
+# The official location of this security.txt file
+# -----------------------------------------------------
+Canonical: https://youssefxmoussa.vercel.app/.well-known/security.txt
+
+# -----------------------------------------------------
+# POLICY
+# Link to vulnerability disclosure policy
+# -----------------------------------------------------
+# Policy: https://youssefxmoussa.vercel.app/security-policy
+
+# -----------------------------------------------------
+# ACKNOWLEDGMENTS
+# Page thanking security researchers
+# -----------------------------------------------------
+# Acknowledgments: https://youssefxmoussa.vercel.app/security-thanks
+
+# -----------------------------------------------------
+# HIRING
+# Information about security job opportunities
+# -----------------------------------------------------
+Hiring: https://youssefxmoussa.vercel.app/#contact
+
+# -----------------------------------------------------
+# CSAF (Common Security Advisory Framework)
+# Machine-readable security advisories
+# -----------------------------------------------------
+# CSAF: https://youssefxmoussa.vercel.app/.well-known/csaf/provider-metadata.json
+
+# =====================================================
+# SECURITY EXPECTATIONS
+#
+# Response Time: Within 48 hours
+# Resolution Time: Depends on severity
+# Scope: All pages on youssefxmoussa.vercel.app
+#
+# Out of Scope:
+# - Social engineering attacks
+# - Physical attacks
+# - Denial of service attacks
+# - Spam or social media impersonation
+#
+# =====================================================
 
 # =====================================================
 # END OF SECURITY.TXT
