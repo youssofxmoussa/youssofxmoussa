@@ -1,17 +1,58 @@
 {
-  "name": "Youssof Moussa - Creative Developer",
+  "name": "Youssof Moussa - Creative Frontend Developer & UI/UX Designer",
   "short_name": "Youssof Moussa",
-  "description": "Creative web developer specializing in immersive digital experiences with GSAP animations and modern web technologies.",
+  "description": "Award-winning creative frontend web developer and UI/UX designer from Lebanon. Specializing in immersive digital experiences with GSAP animations, React applications, and modern web technologies.",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["portfolio", "web development", "design"],
+  "categories": [
+    "portfolio",
+    "web development",
+    "design",
+    "technology",
+    "business",
+    "productivity"
+  ],
+  "iarc_rating_id": "",
+  "prefer_related_applications": false,
   "icons": [
+    {
+      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "sizes": "48x48",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "sizes": "72x72",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "sizes": "96x96",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "sizes": "128x128",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "sizes": "144x144",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
     {
       "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
       "sizes": "192x192",
@@ -20,12 +61,108 @@
     },
     {
       "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Youssof Moussa Portfolio - Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Projects",
+      "short_name": "Projects",
+      "description": "Browse portfolio projects",
+      "url": "/#projects",
+      "icons": [
+        {
+          "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Contact Me",
+      "short_name": "Contact",
+      "description": "Get in touch for projects",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View Skills",
+      "short_name": "Skills",
+      "description": "See technical skills and expertise",
+      "url": "/#skills",
+      "icons": [
+        {
+          "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
   "related_applications": [],
-  "prefer_related_applications": false
+  "protocol_handlers": [],
+  "share_target": {
+    "action": "/#contact",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
+  "file_handlers": [],
+  "permissions_policy": {
+    "accelerometer": [],
+    "ambient-light-sensor": [],
+    "autoplay": ["self"],
+    "battery": [],
+    "camera": [],
+    "display-capture": [],
+    "document-domain": [],
+    "encrypted-media": ["self"],
+    "fullscreen": ["self"],
+    "geolocation": [],
+    "gyroscope": [],
+    "magnetometer": [],
+    "microphone": [],
+    "midi": [],
+    "payment": [],
+    "picture-in-picture": ["self"],
+    "publickey-credentials-get": [],
+    "sync-xhr": [],
+    "usb": [],
+    "xr-spatial-tracking": []
+  }
 }

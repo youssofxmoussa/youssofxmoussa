@@ -1,34 +1,147 @@
+/* =====================================================
+   HUMANS.TXT - Youssof Moussa Portfolio
+   The humans behind the website
+   Domain: youssefxmoussa.vercel.app
+   Last Updated: 2026-02-07
+   Version: 3.0.0
+   ===================================================== */
+
 /* TEAM */
 Developer & Designer: Youssof Moussa
-Role: Creative Developer & UI/UX Designer
+Role: Creative Frontend Developer & UI/UX Designer
 Location: Lebanon
+Languages: English, Arabic (العربية), French (Français)
 Contact: https://t.me/youssofxmoussa
+WhatsApp: +961 71 463 532
 Twitter: @youssofmoussa
 Instagram: @youssof.moussa
-Website: https://youssofmoussa.com
+Website: https://youssefxmoussa.vercel.app
+
+/* ABOUT */
+Youssof Moussa is an award-winning creative frontend web developer
+and UI/UX designer from Lebanon. Specializing in creating immersive
+digital experiences with stunning animations, pixel-perfect designs,
+and modern web technologies.
+
+يوسف موسى هو مطور واجهات ويب إبداعي حائز على جوائز ومصمم UI/UX من لبنان.
+متخصص في إنشاء تجارب رقمية غامرة مع رسوم متحركة مذهلة وتصاميم مثالية
+وتقنيات ويب حديثة.
+
+Youssof Moussa est un développeur web frontend créatif primé et
+concepteur UI/UX du Liban. Spécialisé dans la création d'expériences
+numériques immersives avec des animations époustouflantes, des
+designs pixel-perfect et des technologies web modernes.
 
 /* SITE */
-Last Update: 2026-02-06
-Language: English
-Standards: HTML5, CSS3, ES6+
+Last Update: 2026-02-07
+Language: English, Arabic, French
+Standards: HTML5, CSS3, ES6+, WCAG 2.1 AA
 Framework: React 18
 Build Tool: Vite
 Styling: Tailwind CSS
 Animation: GSAP, Framer Motion
-Hosting: Lovable
+Smooth Scrolling: Lenis
+UI Components: Radix UI, shadcn/ui
+Hosting: Vercel
 
 /* TECHNOLOGIES */
-Frontend: React, TypeScript, Tailwind CSS
-Animation: GSAP, Framer Motion, Lenis
-Icons: Lucide React
-UI Components: Radix UI, shadcn/ui
-State Management: React Query
+Frontend:
+  - React 18
+  - TypeScript
+  - JavaScript (ES6+)
+  - Tailwind CSS
+  - CSS3 (Grid, Flexbox, Animations)
+  - HTML5 (Semantic)
+
+Animation & Motion:
+  - GSAP (GreenSock Animation Platform)
+  - Framer Motion
+  - Lenis (Smooth Scrolling)
+  - CSS Animations
+  - SVG Animations
+
+State Management:
+  - React Query (@tanstack/react-query)
+  - React Context API
+  - React Hooks
+
+UI Libraries:
+  - Radix UI
+  - shadcn/ui
+  - Lucide React (Icons)
+  - Recharts
+
+Build & Development:
+  - Vite
+  - TypeScript Compiler
+  - ESLint
+  - Prettier
+
+Design Tools:
+  - Figma
+  - Adobe Photoshop
+  - Adobe Illustrator
+
+/* SERVICES OFFERED */
+- Custom Web Development
+- React Application Development
+- UI/UX Design
+- Web Animations (GSAP, Framer Motion)
+- Responsive Design
+- Performance Optimization
+- SEO Optimization
+- Frontend Architecture
+- Design System Development
+- Component Library Development
+
+/* SKILLS */
+- React.js / React 18
+- TypeScript / JavaScript
+- GSAP Animations
+- Framer Motion
+- Tailwind CSS
+- Next.js
+- Node.js
+- CSS3 / SCSS
+- HTML5
+- Figma
+- Git / GitHub
+- REST APIs
+- GraphQL
+- Responsive Design
+- Accessibility (a11y)
+- Performance Optimization
 
 /* CREDITS */
-Fonts: Custom Display Fonts
-Icons: Lucide Icons
+Fonts: System UI, Custom Display Fonts
+Icons: Lucide Icons, Custom SVGs
 Inspiration: Award-winning portfolios worldwide
+Colors: Custom dark theme with purple/blue accents
 
-/* THANKS */
+/* SPECIAL THANKS */
 To everyone who visits this portfolio and appreciates creative development.
-Special thanks to the open-source community.
+Special thanks to the open-source community for the amazing tools and libraries.
+
+شكر خاص لكل من يزور هذا الموقع ويقدر التطوير الإبداعي.
+شكر للمجتمع مفتوح المصدر للأدوات والمكتبات الرائعة.
+
+Merci à tous ceux qui visitent ce portfolio et apprécient le développement créatif.
+Merci à la communauté open-source pour les outils et bibliothèques incroyables.
+
+/* LICENSE */
+© 2024-2026 Youssof Moussa. All rights reserved.
+Code samples may be used for educational purposes with attribution.
+
+/* CONTACT */
+For project inquiries:
+  Telegram: https://t.me/youssofxmoussa
+  WhatsApp: https://wa.me/96171463532
+  Instagram: https://instagram.com/youssof.moussa
+
+For security issues:
+  See: /.well-known/security.txt
+
+/* =====================================================
+   END OF HUMANS.TXT
+   Made with ❤️ in Lebanon
+   ===================================================== */
