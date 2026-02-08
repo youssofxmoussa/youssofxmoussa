@@ -1,17 +1,14 @@
 # =====================================================
 # ROBOTS.TXT - Youssof Moussa Portfolio
-# Professional Web Crawler Configuration
+# Optimized for Google Search Console
 # Domain: youssefxmoussa.vercel.app
-# Last Updated: 2026-02-07
-# Version: 3.0.0
-#
-# This file controls how search engine crawlers
-# access and index the website content.
+# Last Updated: 2026-02-08
+# Version: 4.0.0 - Crawl Budget Optimized
 # =====================================================
 
 # -----------------------------------------------------
 # GENERAL RULES - All Search Engines
-# Default permissions for all compliant crawlers
+# Optimized for crawl budget efficiency
 # -----------------------------------------------------
 User-agent: *
 Allow: /
@@ -34,7 +31,7 @@ Disallow: /coverage/
 Disallow: /.vscode/
 Disallow: /.idea/
 
-# Block config files (but allow manifest.json)
+# Block config files
 Disallow: /vite.config.ts
 Disallow: /tailwind.config.ts
 Disallow: /tsconfig.json
@@ -47,31 +44,12 @@ Disallow: /package.json
 Disallow: /package-lock.json
 Disallow: /bun.lockb
 
-# Block TypeScript/JSX source files
-Disallow: /*.tsx$
-Disallow: /*.ts$
-Disallow: /*.jsx$
-Disallow: /*.css$
-
-# Allow compiled assets
-Allow: /*.js$
-Allow: /assets/
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.gif$
-Allow: /*.webp$
-Allow: /*.svg$
-Allow: /*.ico$
-Allow: /*.woff$
-Allow: /*.woff2$
-
-# Crawl delay for general bots
-Crawl-delay: 1
+# Increased crawl delay for general bots (reduces quota usage)
+Crawl-delay: 2
 
 # -----------------------------------------------------
-# GOOGLE SEARCH BOT
-# Primary search engine - Full access
+# GOOGLE SEARCH BOT - Primary
+# Faster crawl for main search engine
 # -----------------------------------------------------
 User-agent: Googlebot
 Allow: /
@@ -79,93 +57,34 @@ Allow: /sitemap.xml
 Allow: /.well-known/
 Crawl-delay: 1
 
-# Google Image Bot - Allow all images
 User-agent: Googlebot-Image
 Allow: /
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.gif$
-Allow: /*.webp$
-Allow: /*.svg$
 Allow: /og-image.jpg
 Allow: /assets/
 
-# Google Mobile Bot
 User-agent: Googlebot-Mobile
 Allow: /
 Crawl-delay: 1
 
-# Google News Bot
-User-agent: Googlebot-News
-Allow: /
-Crawl-delay: 2
-
-# Google Video Bot
-User-agent: Googlebot-Video
-Allow: /
-Allow: /*.mp4$
-Allow: /*.webm$
-Crawl-delay: 2
-
-# Google AdsBot
-User-agent: AdsBot-Google
-Allow: /
-Crawl-delay: 2
-
-# Google AdsBot Mobile
-User-agent: AdsBot-Google-Mobile
-Allow: /
-Crawl-delay: 2
-
-# Google Storebot
-User-agent: Storebot-Google
-Allow: /
-
-# Google APIs
-User-agent: APIs-Google
-Allow: /
-
-# Google Page Speed Insights
-User-agent: Chrome-Lighthouse
-Allow: /
-
 # -----------------------------------------------------
 # BING SEARCH BOT
-# Microsoft search engine - Full access
 # -----------------------------------------------------
 User-agent: Bingbot
 Allow: /
 Allow: /sitemap.xml
-Crawl-delay: 1
+Crawl-delay: 2
 
 User-agent: msnbot
 Allow: /
-Crawl-delay: 1
-
-User-agent: msnbot-media
-Allow: /
-Allow: /*.jpg$
-Allow: /*.png$
-Crawl-delay: 2
-
-User-agent: BingPreview
-Allow: /
-
-User-agent: adidxbot
-Allow: /
 Crawl-delay: 2
 
 # -----------------------------------------------------
-# SOCIAL MEDIA BOTS
-# Allow full access for link previews
+# SOCIAL MEDIA BOTS - Allow for previews
 # -----------------------------------------------------
-# Twitter/X Bot
 User-agent: Twitterbot
 Allow: /
 Allow: /og-image.jpg
 
-# Facebook Bot
 User-agent: facebookexternalhit
 Allow: /
 Allow: /og-image.jpg
@@ -173,269 +92,86 @@ Allow: /og-image.jpg
 User-agent: facebookexternalhit/1.1
 Allow: /
 
-User-agent: Facebot
-Allow: /
-
-# Meta Bot
-User-agent: meta-externalagent
-Allow: /
-
-# LinkedIn Bot
 User-agent: LinkedInBot
 Allow: /
 Allow: /og-image.jpg
 
-# Pinterest Bot
-User-agent: Pinterest
-Allow: /
-
-User-agent: Pinterestbot
-Allow: /
-
-# Slack Bot
-User-agent: Slackbot
-Allow: /
-
-User-agent: Slackbot-LinkExpanding
-Allow: /
-
-# Discord Bot
 User-agent: Discordbot
 Allow: /
 Allow: /og-image.jpg
 
-# Telegram Bot
 User-agent: TelegramBot
 Allow: /
 Allow: /og-image.jpg
 
-# WhatsApp Bot
 User-agent: WhatsApp
 Allow: /
 Allow: /og-image.jpg
 
-# Viber Bot
-User-agent: Viber
-Allow: /
-
-# Skype Bot
-User-agent: Skype
-Allow: /
-
-# Snapchat Bot
-User-agent: Snapchat
-Allow: /
-
-# Reddit Bot
-User-agent: redditbot
-Allow: /
-
-# Quora Bot
-User-agent: Quora Link Preview
-Allow: /
-
-# Medium Bot
-User-agent: Mediumbot
-Allow: /
-
-# Tumblr Bot
-User-agent: Tumblr
+User-agent: Slackbot
 Allow: /
 
 # -----------------------------------------------------
-# OTHER MAJOR SEARCH ENGINES
-# International search engines - Full access
+# OTHER SEARCH ENGINES
 # -----------------------------------------------------
-# Yahoo Bot
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-# DuckDuckGo Bot
 User-agent: DuckDuckBot
 Allow: /
-Crawl-delay: 1
-
-# Baidu Bot (China)
-User-agent: Baiduspider
-Allow: /
 Crawl-delay: 2
 
-User-agent: Baiduspider-image
-Allow: /
-Crawl-delay: 2
-
-User-agent: Baiduspider-video
-Allow: /
-Crawl-delay: 2
-
-# Yandex Bot (Russia)
 User-agent: Yandex
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 3
 
 User-agent: YandexBot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 3
 
-User-agent: YandexImages
+User-agent: Baiduspider
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 3
 
-User-agent: YandexVideo
-Allow: /
-Crawl-delay: 2
-
-User-agent: YandexMedia
-Allow: /
-Crawl-delay: 2
-
-User-agent: YandexBlogs
-Allow: /
-Crawl-delay: 2
-
-User-agent: YandexNews
-Allow: /
-Crawl-delay: 2
-
-User-agent: YandexPagechecker
-Allow: /
-
-# Sogou Bot (China)
-User-agent: Sogou
-Allow: /
-Crawl-delay: 2
-
-User-agent: sogou spider
-Allow: /
-Crawl-delay: 2
-
-# Naver Bot (Korea)
-User-agent: Yeti
-Allow: /
-Crawl-delay: 2
-
-# Daum Bot (Korea)
-User-agent: Daumoa
-Allow: /
-Crawl-delay: 2
-
-# Seznam Bot (Czech Republic)
-User-agent: SeznamBot
-Allow: /
-Crawl-delay: 2
-
-# Qwant Bot (France)
-User-agent: Qwantify
-Allow: /
-Crawl-delay: 2
-
-# Ecosia Bot (Germany)
-User-agent: Ecosia
-Allow: /
-Crawl-delay: 1
-
-# Mojeek Bot (UK)
-User-agent: MojeekBot
-Allow: /
-Crawl-delay: 2
-
-# Exalead Bot (France)
-User-agent: Exabot
+User-agent: Slurp
 Allow: /
 Crawl-delay: 2
 
 # -----------------------------------------------------
 # SEO & ANALYTICS TOOLS
-# Allow with rate limiting for analysis
+# Higher delay to preserve crawl budget
 # -----------------------------------------------------
 User-agent: AhrefsBot
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 10
 
 User-agent: SemrushBot
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 10
 
 User-agent: MJ12bot
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 10
 
 User-agent: DotBot
 Allow: /
-Crawl-delay: 5
+Crawl-delay: 10
 
 User-agent: rogerbot
 Allow: /
-Crawl-delay: 5
-
-User-agent: SiteAuditBot
-Allow: /
-Crawl-delay: 5
-
-User-agent: SEOkicks
-Allow: /
-Crawl-delay: 5
-
-User-agent: Screaming Frog SEO Spider
-Allow: /
-Crawl-delay: 5
-
-User-agent: seoscanners
-Allow: /
-Crawl-delay: 5
+Crawl-delay: 10
 
 # -----------------------------------------------------
 # ARCHIVE BOTS
-# Allow archiving for historical preservation
 # -----------------------------------------------------
 User-agent: ia_archiver
 Allow: /
-Crawl-delay: 10
+Crawl-delay: 15
 
 User-agent: archive.org_bot
 Allow: /
-Crawl-delay: 10
-
-User-agent: Arquivo-web-crawler
-Allow: /
-Crawl-delay: 10
+Crawl-delay: 15
 
 # -----------------------------------------------------
-# ACCESSIBILITY & READING BOTS
-# Allow for accessibility tools
-# -----------------------------------------------------
-User-agent: NVDA
-Allow: /
-
-User-agent: VoiceOver
-Allow: /
-
-User-agent: TalkBack
-Allow: /
-
-User-agent: JAWS
-Allow: /
-
-# -----------------------------------------------------
-# PERFORMANCE & MONITORING BOTS
-# Allow for performance monitoring
-# -----------------------------------------------------
-User-agent: UptimeRobot
-Allow: /
-
-User-agent: Pingdom
-Allow: /
-
-User-agent: StatusCake
-Allow: /
-
-User-agent: GTmetrix
-Allow: /
-
-# -----------------------------------------------------
-# BLOCK MALICIOUS/SPAM BOTS
-# Known bad actors and unwanted crawlers
+# BLOCK AGGRESSIVE SCRAPERS
+# These consume crawl budget unnecessarily
 # -----------------------------------------------------
 User-agent: MegaIndex.ru
 Disallow: /
@@ -456,9 +192,6 @@ User-agent: PetalBot
 Disallow: /
 
 User-agent: ZoominfoBot
-Disallow: /
-
-User-agent: AhrefsBot/7.0
 Disallow: /
 
 User-agent: MauiBot
@@ -482,62 +215,10 @@ Disallow: /
 User-agent: Barkrowler
 Disallow: /
 
-User-agent: CriteoBot
-Disallow: /
-
-User-agent: Daum
-Disallow: /
-
-User-agent: Gigabot
-Disallow: /
-
-User-agent: linkdexbot
-Disallow: /
-
-User-agent: WBSearchBot
-Disallow: /
-
-User-agent: spbot
-Disallow: /
-
-# -----------------------------------------------------
-# BLOCK AGGRESSIVE SCRAPERS
-# High-volume scrapers that don't respect limits
-# -----------------------------------------------------
 User-agent: HTTrack
 Disallow: /
 
 User-agent: WebCopier
-Disallow: /
-
-User-agent: WebReaper
-Disallow: /
-
-User-agent: WebStripper
-Disallow: /
-
-User-agent: SiteSnagger
-Disallow: /
-
-User-agent: Offline Explorer
-Disallow: /
-
-User-agent: BlackWidow
-Disallow: /
-
-User-agent: GetRight
-Disallow: /
-
-User-agent: GetWeb
-Disallow: /
-
-User-agent: Go!Zilla
-Disallow: /
-
-User-agent: Download Demon
-Disallow: /
-
-User-agent: Teleport Pro
 Disallow: /
 
 User-agent: Wget
@@ -546,14 +227,10 @@ Disallow: /
 User-agent: Curl
 Disallow: /
 
-User-agent: libwww
-Disallow: /
-
 # -----------------------------------------------------
-# AI TRAINING BOTS
-# Block AI crawlers to protect content
+# BLOCK AI TRAINING BOTS
+# Protect content from AI scraping
 # -----------------------------------------------------
-# OpenAI Bots
 User-agent: GPTBot
 Disallow: /
 
@@ -563,11 +240,9 @@ Disallow: /
 User-agent: OAI-SearchBot
 Disallow: /
 
-# Common Crawl (used by many AI models)
 User-agent: CCBot
 Disallow: /
 
-# Anthropic AI
 User-agent: anthropic-ai
 Disallow: /
 
@@ -577,108 +252,54 @@ Disallow: /
 User-agent: ClaudeBot
 Disallow: /
 
-# Google AI Training
 User-agent: Google-Extended
 Disallow: /
 
-# Cohere AI
 User-agent: cohere-ai
 Disallow: /
 
-# Amazon AI
 User-agent: Amazonbot
 Disallow: /
 
-# Apple AI (Applebot-Extended for AI training)
 User-agent: Applebot-Extended
 Disallow: /
 
-# Meta AI
 User-agent: FacebookBot
 Disallow: /
 
-# Perplexity AI
 User-agent: PerplexityBot
 Disallow: /
 
-# YouBot (You.com AI)
 User-agent: YouBot
 Disallow: /
 
-# Diffbot (AI training)
 User-agent: Diffbot
-Disallow: /
-
-# Bytedance AI
-User-agent: Bytespider
-Disallow: /
-
-# Omgili (AI training data)
-User-agent: omgili
 Disallow: /
 
 User-agent: omgilibot
 Disallow: /
 
-# Sentibot (sentiment analysis/AI)
-User-agent: Sentibot
-Disallow: /
-
-# img2dataset (AI image training)
-User-agent: img2dataset
-Disallow: /
-
-# AI2Bot (Allen Institute for AI)
 User-agent: AI2Bot
-Disallow: /
-
-# ISSCyberRiskCrawler
-User-agent: ISSCyberRiskCrawler
-Disallow: /
-
-# Webz.io (AI training data)
-User-agent: Webzio-Extended
-Disallow: /
-
-# Timpibot (Timpi search AI)
-User-agent: Timpibot
-Disallow: /
-
-# VelenPublicWebCrawler (AI)
-User-agent: VelenPublicWebCrawler
-Disallow: /
-
-# Kangaroo Bot (AI)
-User-agent: Kangaroo Bot
-Disallow: /
-
-# PiplBot (people search AI)
-User-agent: PiplBot
 Disallow: /
 
 # -----------------------------------------------------
 # SITEMAP LOCATION
-# Direct crawlers to the sitemap
 # -----------------------------------------------------
 Sitemap: https://youssefxmoussa.vercel.app/sitemap.xml
 
 # -----------------------------------------------------
-# HOST DIRECTIVE (for Yandex and others)
-# Specify the preferred domain
+# HOST DIRECTIVE
 # -----------------------------------------------------
 Host: https://youssefxmoussa.vercel.app
 
 # -----------------------------------------------------
 # CLEAN PARAM (for Yandex)
-# Remove tracking parameters from URLs
+# Remove tracking parameters
 # -----------------------------------------------------
 Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term
-Clean-param: fbclid&gclid&msclkid&mc_cid&mc_eid
-Clean-param: ref&source&referrer
-Clean-param: _ga&_gl&_gid
+Clean-param: fbclid&gclid&msclkid
 
 # =====================================================
 # END OF ROBOTS.TXT
-# Total Lines: 500+
-# Last Updated: 2026-02-07
+# Optimized for crawl budget efficiency
 # =====================================================
