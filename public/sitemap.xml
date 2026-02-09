@@ -215,55 +215,6 @@ and includes extended metadata for better SEO.
     <xhtml:link rel="alternate" hreflang="fr" href="https://youssefxmoussa.vercel.app/#contact"/>
   </url>
   
-  <!-- =====================================================
-       STATIC RESOURCES
-       Important static files
-       ===================================================== -->
-  
-  <!-- Robots.txt -->
-  <url>
-    <loc>https://youssefxmoussa.vercel.app/robots.txt</loc>
-    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
-  <!-- Manifest -->
-  <url>
-    <loc>https://youssefxmoussa.vercel.app/manifest.json</loc>
-    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
-  <!-- Humans.txt -->
-  <url>
-    <loc>https://youssefxmoussa.vercel.app/humans.txt</loc>
-    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <!-- Security.txt -->
-  <url>
-    <loc>https://youssefxmoussa.vercel.app/.well-known/security.txt</loc>
-    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <!-- OG Image -->
-  <url>
-    <loc>https://youssefxmoussa.vercel.app/og-image.jpg</loc>
-    <lastmod>2026-02-07T00:00:00+00:00</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-    
-    <image:image>
-      <image:loc>https://youssefxmoussa.vercel.app/og-image.jpg</image:loc>
-      <image:title>Youssof Moussa Portfolio OG Image</image:title>
-      <image:caption>Professional Open Graph image for social sharing</image:caption>
-    </image:image>
-  </url>
+  <!-- Static resources removed to save crawl budget -->
 
 </urlset>
