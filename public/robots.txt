@@ -44,8 +44,8 @@ Disallow: /package.json
 Disallow: /package-lock.json
 Disallow: /bun.lockb
 
-# Increased crawl delay for general bots (reduces quota usage)
-Crawl-delay: 2
+# Increased crawl delay to reduce server load and fix quota exceeded
+Crawl-delay: 5
 
 # -----------------------------------------------------
 # GOOGLE SEARCH BOT - Primary
@@ -55,7 +55,7 @@ User-agent: Googlebot
 Allow: /
 Allow: /sitemap.xml
 Allow: /.well-known/
-Crawl-delay: 1
+Crawl-delay: 3
 
 User-agent: Googlebot-Image
 Allow: /
@@ -64,7 +64,7 @@ Allow: /assets/
 
 User-agent: Googlebot-Mobile
 Allow: /
-Crawl-delay: 1
+Crawl-delay: 3
 
 # -----------------------------------------------------
 # BING SEARCH BOT
