@@ -2926,43 +2926,28 @@
          ===================================================== -->
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- =====================================================
-         SECTION 44: NOSCRIPT FALLBACK
-         Fallback for users without JavaScript
-         ===================================================== -->
+
+
+    
+  </head>
+  <body>
     <noscript>
       <style>
-        body {
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          background-color: #0a0a0a;
-          color: #ffffff;
+        .noscript-container {
+          font-family: system-ui, sans-serif;
+          background: #0a0a0a;
+          color: #fff;
+          padding: 3rem;
+          text-align: center;
+          min-height: 100vh;
           display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
-          min-height: 100vh;
-          margin: 0;
-          padding: 20px;
-          text-align: center;
         }
-        .noscript-container {
-          max-width: 600px;
-        }
-        h1 {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-        p {
-          font-size: 1.1rem;
-          line-height: 1.6;
-          color: #a0a0a0;
-        }
-        a {
-          color: #8b5cf6;
-          text-decoration: none;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
+        .noscript-container h1 { font-size: 2rem; margin-bottom: 1rem; }
+        .noscript-container p { font-size: 1.1rem; line-height: 1.6; color: #a0a0a0; }
+        .noscript-container a { color: #8b5cf6; text-decoration: none; }
       </style>
       <div class="noscript-container">
         <h1>Youssof Moussa</h1>
@@ -2970,25 +2955,18 @@
         <p>يوسف موسى - مطور واجهات أمامية ومصمم UI/UX من لبنان</p>
         <p>Développeur Frontend Créatif et Concepteur UI/UX du Liban</p>
         <br>
-        <p>This website requires JavaScript to run. Please enable JavaScript in your browser settings to view the full portfolio experience.</p>
-        <p>يتطلب هذا الموقع JavaScript للتشغيل. يرجى تمكين JavaScript في إعدادات المتصفح لعرض تجربة البورتفوليو الكاملة.</p>
-        <p>Ce site nécessite JavaScript pour fonctionner. Veuillez activer JavaScript dans les paramètres de votre navigateur.</p>
+        <p>This website requires JavaScript to run. Please enable JavaScript in your browser settings.</p>
+        <p>يتطلب هذا الموقع JavaScript للتشغيل.</p>
+        <p>Ce site nécessite JavaScript pour fonctionner.</p>
         <br>
         <p>
-          <strong>Contact / تواصل / Contacter:</strong><br>
+          <strong>Contact:</strong><br>
           <a href="https://wa.me/96171463532">WhatsApp: +961 71 463 532</a><br>
           <a href="https://t.me/youssofxmoussa">Telegram: @youssofxmoussa</a><br>
           <a href="https://www.instagram.com/youssof.moussa/">Instagram: @youssof.moussa</a>
         </p>
       </div>
     </noscript>
-    
-  </head>
-  <body>
-    <!-- =====================================================
-         MAIN APPLICATION ROOT
-         React application mounts here
-         ===================================================== -->
     <div id="root"></div>
     
     <!-- =====================================================
