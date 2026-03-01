@@ -24,57 +24,57 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "src": "/logo.jpg",
       "sizes": "48x48",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "src": "/logo.jpg",
       "sizes": "72x72",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "src": "/logo.jpg",
       "sizes": "96x96",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "src": "/logo.jpg",
       "sizes": "128x128",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/0j2h7V34/Gx-Uio-Eu-Khs-N.jpg",
+      "src": "/logo.jpg",
       "sizes": "144x144",
       "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+      "src": "/logo.jpg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+      "src": "/logo.jpg",
       "sizes": "256x256",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+      "src": "/logo.jpg",
       "sizes": "384x384",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+      "src": "/logo.jpg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     }
   ],
@@ -94,7 +94,7 @@
       "url": "/#projects",
       "icons": [
         {
-          "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+          "src": "/logo.jpg",
           "sizes": "192x192"
         }
       ]
@@ -106,7 +106,7 @@
       "url": "/#contact",
       "icons": [
         {
-          "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+          "src": "/logo.jpg",
           "sizes": "192x192"
         }
       ]
@@ -118,7 +118,7 @@
       "url": "/#skills",
       "icons": [
         {
-          "src": "https://i.ibb.co/ZRnM9vHG/favicon.png",
+          "src": "/logo.jpg",
           "sizes": "192x192"
         }
       ]
