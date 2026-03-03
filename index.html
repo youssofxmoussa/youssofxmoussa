@@ -1700,31 +1700,48 @@
     </script>
     
     <!-- =====================================================
-         SECTION 24: STRUCTURED DATA - FAQ PAGE (UNIFIED)
-         Single FAQPage with all questions (EN + AR + FR)
+         SECTION 24: STRUCTURED DATA - FAQ PAGE
+         Google-compatible single FAQPage block
          ===================================================== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "@id": "https://youssefxmoussa.vercel.app/#faq",
+      "inLanguage": "en",
       "mainEntity": [
-        {"@type":"Question","name":"What services does Youssof Moussa offer?","acceptedAnswer":{"@type":"Answer","text":"Youssof Moussa offers professional frontend web development services including custom React applications, UI/UX design, GSAP and Framer Motion animations, responsive web design, performance optimization, and full-stack web solutions using modern technologies like TypeScript, Next.js, and Tailwind CSS."}},
-        {"@type":"Question","name":"What technologies does Youssof Moussa specialize in?","acceptedAnswer":{"@type":"Answer","text":"Youssof specializes in React, TypeScript, JavaScript (ES6+), GSAP animations, Framer Motion, Next.js, Node.js, Tailwind CSS, CSS3, HTML5, and various other modern web technologies. He also has expertise in UI/UX design tools like Figma and Adobe XD."}},
-        {"@type":"Question","name":"How can I contact Youssof Moussa for a project?","acceptedAnswer":{"@type":"Answer","text":"You can reach Youssof via Telegram (@youssofxmoussa), WhatsApp (+961 71 463 532), or Instagram (@youssof.moussa). He is available for freelance projects worldwide and typically responds within 24 hours."}},
-        {"@type":"Question","name":"Where is Youssof Moussa based?","acceptedAnswer":{"@type":"Answer","text":"Youssof Moussa is based in Lebanon but works with clients worldwide, providing remote web development and design services."}},
-        {"@type":"Question","name":"What is Youssof Moussa's experience level?","acceptedAnswer":{"@type":"Answer","text":"Youssof Moussa is an award-winning creative developer with extensive experience in frontend development and UI/UX design, showcasing successful projects including e-commerce platforms, SaaS dashboards, and interactive web applications."}},
-        {"@type":"Question","name":"Does Youssof Moussa work with international clients?","acceptedAnswer":{"@type":"Answer","text":"Yes, Youssof Moussa works with clients globally. He is fluent in English, Arabic, and French, which allows him to collaborate effectively with clients from diverse backgrounds."}},
-        {"@type":"Question","name":"What is the typical project timeline?","acceptedAnswer":{"@type":"Answer","text":"A simple landing page might take 1-2 weeks, while a complex web application could take 4-8 weeks or more."}},
-        {"@type":"Question","name":"What makes Youssof Moussa different from other developers?","acceptedAnswer":{"@type":"Answer","text":"Youssof stands out through his combination of technical expertise and creative design skills, specializing in immersive digital experiences with stunning animations, performance, and pixel-perfect implementations."}},
-        {"@type":"Question","name":"Who is Youssof Moussa?","acceptedAnswer":{"@type":"Answer","text":"Youssof Moussa (also spelled Youssef Moussa, يوسف موسى) is a creative frontend web developer and UI/UX designer from Lebanon, specializing in modern, responsive, and animated websites using React, TypeScript, and GSAP."}},
-        {"@type":"Question","name":"Can Youssof Moussa build e-commerce websites?","acceptedAnswer":{"@type":"Answer","text":"Yes, Youssof has extensive experience building e-commerce platforms with product catalogs, shopping carts, payment integration, user authentication, and admin dashboards."}},
-        {"@type":"Question","name":"من هو يوسف موسى؟","acceptedAnswer":{"@type":"Answer","text":"يوسف موسى هو مطور ويب إبداعي ومصمم واجهات مستخدم UI/UX من لبنان. يتخصص في بناء مواقع حديثة ومتجاوبة باستخدام React و TypeScript و GSAP."}},
-        {"@type":"Question","name":"ما هي الخدمات التي يقدمها يوسف موسى؟","acceptedAnswer":{"@type":"Answer","text":"يقدم يوسف موسى خدمات تطوير واجهات المواقع الاحترافية بما في ذلك تطبيقات React المخصصة، تصميم UI/UX، رسوم متحركة، وحلول ويب متكاملة."}},
-        {"@type":"Question","name":"كيف يمكنني التواصل مع يوسف موسى؟","acceptedAnswer":{"@type":"Answer","text":"يمكنك التواصل عبر تيليجرام (@youssofxmoussa)، واتساب (+961 71 463 532)، أو إنستجرام (@youssof.moussa)."}},
-        {"@type":"Question","name":"Qui est Youssof Moussa?","acceptedAnswer":{"@type":"Answer","text":"Youssof Moussa est un développeur web frontend créatif et concepteur UI/UX du Liban, spécialisé dans la création de sites web modernes et animés avec React, TypeScript et GSAP."}},
-        {"@type":"Question","name":"Quels services Youssof Moussa propose-t-il?","acceptedAnswer":{"@type":"Answer","text":"Youssof propose des applications React personnalisées, la conception UI/UX, des animations GSAP et Framer Motion, la conception web responsive et des solutions web complètes."}},
-        {"@type":"Question","name":"Comment contacter Youssof Moussa?","acceptedAnswer":{"@type":"Answer","text":"Via Telegram (@youssofxmoussa), WhatsApp (+961 71 463 532), ou Instagram (@youssof.moussa). Disponible pour des projets freelance dans le monde entier."}}
+        {
+          "@type": "Question",
+          "name": "What services does Youssof Moussa offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Youssof Moussa offers frontend web development, UI/UX design, animation-rich interfaces, and performance-focused modern website builds for global clients."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What technologies does Youssof Moussa specialize in?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Youssof specializes in React, TypeScript, JavaScript, GSAP, Framer Motion, Tailwind CSS, and modern frontend architecture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I contact Youssof Moussa for a project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can contact Youssof through Telegram (@youssofxmoussa), WhatsApp (+961 71 463 532), or Instagram (@youssof.moussa)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Youssof Moussa work with international clients?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Youssof works remotely with international clients across different regions and time zones."
+          }
+        }
       ]
     }
     </script>
