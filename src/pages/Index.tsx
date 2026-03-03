@@ -201,13 +201,13 @@ const Index = () => {
         <Marquee 
           items={marqueeItems} 
           speed={40} 
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-muted/20 hover:text-muted/40 transition-colors" 
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors" 
         />
         <Marquee 
           items={marqueeItems} 
           speed={30} 
           direction="right"
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-foreground/5 hover:text-foreground/10 transition-colors mt-2 sm:mt-4" 
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-muted-foreground/25 hover:text-muted-foreground/40 transition-colors mt-2 sm:mt-4"
         />
       </section>
 
